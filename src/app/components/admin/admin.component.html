@@ -1,0 +1,36 @@
+<div>
+  <h1>Panel de Administrador</h1>
+  <ul>
+      <li *ngFor="let paciente of pacientes">
+         {{paciente.documento}} - {{paciente.nombre}} {{paciente.apellido}} - {{paciente.edad}} años
+          <button (click)="deletePaciente(paciente.documento)">Eliminar</button>
+          <button (click)="selectPaciente(paciente)">Editar</button>
+      </li>
+  </ul>
+
+
+
+  <div *ngIf="selectedPaciente">
+      <h2>Editar Paciente</h2>
+      <form (ngSubmit)="updatePaciente()">
+          <label>
+              Nombre:
+              <input [(ngModel)]="selectedPaciente.nombre" name="nombre" required>
+          </label>
+          <label>
+              Apellido:
+              <input [(ngModel)]="selectedPaciente.apellido" name="apellido" required>
+          </label>
+          <label>
+              Edad:
+              <input [(ngModel)]="selectedPaciente.edad" name="edad" type="number" required>
+          </label>
+          <label>
+            Historia Clínica:
+            <textarea [(ngModel)]="selectedPaciente.historiaClinica" name="historiaClinica" required></textarea>
+          </label>
+          <button type="submit">Guardar</button>
+          <button type="button" (click)="selectedPaciente = null">Cancelar</button>
+      </form>
+  </div>
+</div>
