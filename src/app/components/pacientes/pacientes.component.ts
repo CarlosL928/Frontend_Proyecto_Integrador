@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { PacientesService } from '../../services/pacientes.service';
 import { SocketService } from '../../services/socket.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { error } from 'node:console';
+import { SocketComponent } from '../socket/socket.component';
 
 
 @Component({
   selector: 'app-pacientes',
  standalone: true,
- imports: [CommonModule, FormsModule],
-  providers: [PacientesService, ],
+ imports: [CommonModule, FormsModule, SocketComponent],
+  providers: [PacientesService, SocketService, SocketComponent ],
   templateUrl: './pacientes.component.html',
   styleUrl: './pacientes.component.scss'
 })
@@ -26,6 +27,12 @@ export  class PacientesComponent implements OnInit {
   historiaClinica: string = '';
 
   constructor(private pacienteService: PacientesService, ) { }
+
+
+
+
+
+
 
   ngOnInit(): void {
       this.pacienteService.getPacientes().subscribe(data => {

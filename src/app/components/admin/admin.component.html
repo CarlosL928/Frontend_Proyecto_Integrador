@@ -1,4 +1,4 @@
-<div>
+<div class="listaPacientes">
   <h1>Panel de Administrador</h1>
   <ul>
       <li *ngFor="let paciente of pacientes">
@@ -8,9 +8,7 @@
       </li>
   </ul>
 
-
-
-  <div *ngIf="selectedPaciente">
+  <div class="editorPaciente" *ngIf="selectedPaciente">
       <h2>Editar Paciente</h2>
       <form (ngSubmit)="updatePaciente()">
           <label>

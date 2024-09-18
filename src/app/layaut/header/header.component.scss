@@ -1,25 +1,38 @@
 :host {
-    .header {
-        padding: 12px;
-        font-size: 12px;
-        background: #16697a;
-        color:#EDE7E3;
-        }
-    
-    .app-logo {
+  .header {
+    padding: 12px;
+    font-size: 12px;
+    background: #16697a;
+    color: #EDE7E3;
+  }
+
+  .app-logo {
     font-size: 25px;
-    }
-    
-    button {
+  }
+
+  button {
     &.mat-mdc-button {
-    padding: 10px;
-    margin: 10px;
-    font-size: 16px;
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+      background-color:  #EDE7E3; /* Color de fondo del botón */
+      color: #1a759f; /* Color del texto del botón */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #134e6f; /* Color de fondo del botón al pasar el ratón */
+      }
+
+      &:active {
+        background-color: #0b3a53; /* Color de fondo del botón al hacer clic */
+      }
     }
-    }
-    
-    .menu-spacer {
+  }
+
+  .menu-spacer {
     flex: 1 1 auto;
-    }
-    }
-    
+  }
+}
