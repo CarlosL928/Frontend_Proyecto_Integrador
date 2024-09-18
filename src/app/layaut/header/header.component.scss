@@ -15,19 +15,19 @@
       padding: 10px;
       margin: 10px;
       font-size: 16px;
-      background-color:  #EDE7E3; /* Color de fondo del botón */
-      color: #1a759f; /* Color del texto del botón */
+      background-color:  #EDE7E3;
+      color: #1a759f;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s ease;
 
       &:hover {
-        background-color: #134e6f; /* Color de fondo del botón al pasar el ratón */
+        background-color: #134e6f;
       }
 
       &:active {
-        background-color: #0b3a53; /* Color de fondo del botón al hacer clic */
+        background-color: #0b3a53;
       }
     }
   }
