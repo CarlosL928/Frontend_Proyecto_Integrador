@@ -16,7 +16,7 @@ export class PacientesService {
   constructor(private http: HttpClient) { }
 
   private getAuthHeaders(): HttpHeaders {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZGE1MGM0YjNlZmRlMTJhNzM5MjM3NyIsImlhdCI6MTcyNTkzNDU2N30.mr_BSn4R113We--1iMD9ZsNSY93swJP1vlp7xYIOlsM'; // Reemplaza esto con la lógica para obtener tu token
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZGE1MGM0YjNlZmRlMTJhNzM5MjM3NyIsImlhdCI6MTcyNTkzNDU2N30.mr_BSn4R113We--1iMD9ZsNSY93swJP1vlp7xYIOlsM'; // Reemplaza con el token del admin de postman
     return new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -45,10 +45,10 @@ export class PacientesService {
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Error desconocido!';
     if (error.error instanceof ErrorEvent) {
-      // Client-side errors
+
       errorMessage = `Error: ${error.error.message}`;
     } else {
-      // Server-side errors
+
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     window.alert(errorMessage);
