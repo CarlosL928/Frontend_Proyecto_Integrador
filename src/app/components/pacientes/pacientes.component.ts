@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { PacientesService } from '../../services/pacientes.service';
-import { SocketService } from '../../services/socket.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { error } from 'node:console';
 
 
 @Component({
@@ -23,41 +21,57 @@ export  class PacientesComponent implements OnInit {
   apellido: string = '';
   edad: number | null = null;
   telefono: string = '';
-  historiaClinica: string = '';
+  diagnostico: string = '';
+
 
   constructor(private pacienteService: PacientesService, ) { }
 
   ngOnInit(): void {
       this.pacienteService.getPacientes().subscribe(data => {
         this.pacientes = data;
+
       });
+    }
+
+      // Verificar si el paciente ya existe por el documento
+  pacienteExiste(documento: string): boolean {
+    return this.pacientes.some(paciente => paciente.documento === documento);
+  }
 
 
-  /*this.socketService.getMensaje().subscribe((message: string) =>{
-    alert(`Paciente ${message} por favor pasar`)
-  });*/
-}
+
 
 //Datos solicitados para agregar paciente
-agregarPaciente(): void{
+agregarPaciente(): void {
+  if (this.pacienteExiste(this.documento)) {
+    alert('El paciente con este documento ya existe');
+    return;
+  }
+
   const paciente = {
     documento: this.documento,
     nombre: this.nombre,
     apellido: this.apellido,
     edad: this.edad,
     telefono: this.telefono,
-    historiaClinica: this.historiaClinica
+    diagnostico: this.diagnostico,
+
   };
+
   this.pacienteService.addPaciente(paciente).subscribe(data => {
     this.pacientes.push(data);
-    });
-
-    if (this.documento === this.documento || this.nombre === this.nombre|| this.apellido === this.apellido || this.edad === this.edad ){
-      alert('El paciente ya existe');
-    } else {
-      alert('Paciente agregado con exito');
-    }
- }
-
+    this.resetForm();
+    alert('Paciente agregado con éxito');
+  });
 }
 
+resetForm(): void {
+  this.documento = '';
+  this.nombre = '';
+  this.apellido = '';
+  this.edad = null;
+  this.telefono = '';
+  this.diagnostico = '';
+
+}
+}

@@ -1,22 +1,34 @@
 
 
-<div>
-    <h1>Consultorio Medico</h1>
+
+<h1 class="titulo" >Consultorio Medico</h1>
+
+<div class="container">
+    <h2>Registro de Pacientes</h2>
+
+    <div class="inputs">
     <input type="text" placeholder="Documento" [(ngModel)]="documento">
     <input type="text" placeholder="Nombres" [(ngModel)]="nombre">
     <input type="text" placeholder="Apellidos" [(ngModel)]="apellido">
     <input type="number" placeholder="Edad" [(ngModel)]="edad">
     <input type="text" placeholder="Telefono" [(ngModel)]="telefono">
-    <textarea placeholder="Historia Clínica" [(ngModel)]="historiaClinica"></textarea>
+    <input type="text" placeholder="Diagnostico" [(ngModel)]="diagnostico">
+
     <button (click)="agregarPaciente()">Agregar Paciente</button>
 
-    <ul>
-        <li *ngFor="let paciente of pacientes">
-           {{paciente.documento}} - {{paciente.nombre}} {{paciente.apellido}} - {{paciente.edad}} años
+  </div>
 
 
-        </li>
-    </ul>
+    <ul class="listaPacientes">
+      <li *ngFor="let paciente of pacientes">
+         {{paciente.documento}} - {{paciente.nombre}} {{paciente.apellido}} - {{paciente.edad}} años
+
+
+
+      </li>
+  </ul>
+
+
 
 
 

@@ -1,4 +1,4 @@
-<div>
+<div class="listaPacientes">
   <h1>Panel de Administrador</h1>
   <ul>
       <li *ngFor="let paciente of pacientes">
@@ -10,7 +10,7 @@
 
 
 
-  <div *ngIf="selectedPaciente">
+  <div class="editorPaciente" *ngIf="selectedPaciente">
       <h2>Editar Paciente</h2>
       <form (ngSubmit)="updatePaciente()">
           <label>
@@ -24,6 +24,12 @@
           <label>
               Edad:
               <input [(ngModel)]="selectedPaciente.edad" name="edad" type="number" required>
+          </label>
+          <label>
+              Diagnostico:
+              <input [(ngModel)]="selectedPaciente.diagnostico" name="diagnostico" required>
+
+
           </label>
           <label>
             Historia Clínica:
