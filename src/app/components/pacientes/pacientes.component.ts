@@ -22,7 +22,7 @@ export  class PacientesComponent implements OnInit {
   edad: number | null = null;
   telefono: string = '';
   diagnostico: string = '';
-
+  historiaClinica: string = '';
 
   constructor(private pacienteService: PacientesService, ) { }
 

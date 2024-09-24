@@ -7,13 +7,28 @@ import { Observable } from 'rxjs';
 })
 export class SocketService {
 
-  constructor(private socket: Socket) { }
+  private socket: Socket;
 
-  sendMensaje(msg: string){
-    this.socket.emit('llamarPaciente', msg);
+constructor() {
+    this.socket = new Socket({ url: 'http://localhost:3000', options: {} });
   }
 
-  getMensaje(): Observable<any>{
-    return this.socket.fromEvent('alertaPaciente');
+  // Método para emitir eventos
+  emit(event: string, data: any) {
+    this.socket.emit(event, data);
+  }
+
+  // Método para escuchar eventos
+  on(event: string, callback: (data: any) => void) {
+    this.socket.on(event, callback);
+  }
+
+  // Método para desconectar el socket
+  disconnect() {
+    if (this.socket) {
+      this.socket.disconnect();
+    }
   }
 }
+
+
